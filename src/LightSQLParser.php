@@ -195,6 +195,22 @@ class LightSQLParser
 	}
 
 	/**
+	 * Get SQL Query Tables without aliases
+	 * @return array
+	 */
+	function getAllTablesWithoutAliases() {
+		$raw = $this->getAllTables();
+		$return = [];
+		foreach ($raw as $thistable) {
+			if (str_contains($thistable, " ")) {
+				$thistable = explode(" ", $thistable)[0];
+			}
+			$return[] = $thistable;
+		}
+		return $return;
+	}
+
+	/**
 	 * Join tables.
 	 * @return array
 	 */
