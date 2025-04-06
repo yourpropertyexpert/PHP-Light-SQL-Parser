@@ -61,17 +61,30 @@ string(9) "Customers"
 ```
 
 
-How to retrieve the query's tables:
+How to retrieve the query's tables (including aliases used in the query):
 ```php
 $parser->getAllTables();
 ```
 Output
 ```
 array(1) {
-  [0]=>
-  string(9) "Customers"
+  [0]=> string(9) "Customers",
+  [1]=> string(5) "Alias"
 }
 ```
+
+
+How to retrieve the query's tables (without aliases used in the query):
+```php
+$parser->getAllTablesWithoutAliases();
+```
+Output
+```
+array(1) {
+  [0]=> string(9) "Customers"
+}
+```
+
 
 ### Fields
 How to retrieve the query's fields:
@@ -102,10 +115,10 @@ array(2) {
 | getMethod      | 	  param $query<br>	  return string | Get SQL Query method                               |
 | getFields      | 	  param $query<br>	  return array  | Get Query fields (at the moment only SELECTINSERTUPDATE) |
 | getTable       | 	  param $query<br>	  return string | Get SQL Query First Table                          |
-| getTables      | 	  return array                     | Get SQL Query Tables                               |
+| getTables      | 	  return array                     | Get SQL Query Tables (including aliases)            |
+| getTablesWithoutAliases      | 	  return array                     | Get SQL Query Tables (without aliases)              |
 | getJoinTables      | 	  return array                     | Get SQL Query Join Tables                               |
 | hasJoin      | 	  return bool                     | Return if has join tables                               |
 | getSubQueries      | 	  return array                     | Get all SELECT subqueries                              |
 | hasSubQueries      | 	  return bool                     | Return if has subqueries                              |
-
 
